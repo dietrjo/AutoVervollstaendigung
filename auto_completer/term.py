@@ -5,14 +5,14 @@ class Term:
         self.weight = weight
         self.word = word
 
-    def word_is_smaller_then(self, other_term):
-        return self.word < other_term.word
+    def word_is_smaller_then(self, other_word):
+        return self.word < other_word
 
-    def weight_is_smaller_then(self, other_term):
-        return self.weight < other_term.weight
+    def weight_is_smaller_then(self, other_weight):
+        return self.weight < other_weight
 
-    def subword_is_smaller_then(self, other_term, num_first_letters):
-        return self.word[0:num_first_letters] < other_term.word[0:num_first_letters]
+    def subword_is_smaller_then(self, other_word, num_first_letters):
+        return self.word[0:num_first_letters] < other_word[0:num_first_letters]
 
     def __str__(self):
         return f'{self.weight:>14} {self.word}'
@@ -27,11 +27,11 @@ def test():
     print(term2)
     print(term3)
 
-    print(f'\n{term1.word_is_smaller_then(term2)} (has to be: False)')
-    print(f'{term1.weight_is_smaller_then(term2)} (has to be: False)\n')
+    print(f'\n{term1.word_is_smaller_then(term2.word)} (has to be: False)')
+    print(f'{term1.weight_is_smaller_then(term2.weight)} (has to be: False)\n')
 
-    print(f'{term1.subword_is_smaller_then(term3, 4)} (has to be: True)')
-    print(f'{term1.subword_is_smaller_then(term3, 3)} (has to be: False)')
+    print(f'{term1.subword_is_smaller_then(term3.word, 4)} (has to be: True)')
+    print(f'{term1.subword_is_smaller_then(term3.word, 3)} (has to be: False)')
 
 
 if __name__ == '__main__':
