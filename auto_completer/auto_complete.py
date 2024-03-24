@@ -16,7 +16,38 @@ class AutoComplete:
         self.term_list.sort(key=lambda e: e.word)
 
     def match(self, prefix):
-        pass
+        match_list = []
+
+        left = 0
+        right = len(self.term_list) - 1
+        while left <= right:
+            center = left + (right - left) // 2
+
+            if self.term_list[center].word_is_smaller_then(prefix):
+                # prefix comes after word in alphabetical order
+                left = center + 1
+            else:
+                # prefix comes before word in alphabetical order
+                if self.term_list[center].subword_equals_or_is_smaller_then(prefix, len(prefix)) == "equal":
+                    # word begins with prefix
+                    match_list += [self.term_list[center]]
+                    n = 1
+                    while right >= center + n and self.term_list[center + n].subword_equals_or_is_smaller_then(prefix, len(prefix)) == "equal":
+                        match_list += [self.term_list[center + n]]
+                        n += 1
+
+                    degr = -1
+                    while self.term_list[center + degr].subword_equals_or_is_smaller_then(prefix, len(prefix)) == "equal":
+                        match_list += [self.term_list[center + degr]]
+                        degr -= 1
+
+                    break
+
+                right = center - 1
+
+        match_list.sort(key=lambda e: e.weight, reverse=True)
+
+        return match_list
 
     def matches(self, prefix):
         n = 0
@@ -24,7 +55,7 @@ class AutoComplete:
         right = len(self.term_list)-1
         while left <= right:
             center = left + (right - left) // 2
-            print(self.term_list[center])
+
             if self.term_list[center].word_is_smaller_then(prefix):
                 # prefix comes after word in alphabetical order
                 left = center + 1
@@ -57,8 +88,9 @@ class AutoComplete:
 def test():
     filename = sys.argv[1]
     data = AutoComplete(filename)
-    print(str(data) + "\n")
-    print(data.matches("lam"))
+    match_list = data.match("y")
+    for line in match_list:
+        print(line, end="")
 
 
 if __name__ == '__main__':
