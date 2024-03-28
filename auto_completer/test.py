@@ -4,6 +4,7 @@
 # Testprogramm zum Testen der Auto-Completer-Funktionen
 #   .run(data, k)   bekommt Daten aus txt File und k übergeben und gibt Ergebnisse
 #                   der Auto-Vervollständigung zum entsprechenden User Input aus.
+#   .main()         Hauptprogramm
 # ---------------------------------------------------------------------------------------------
 
 import sys
