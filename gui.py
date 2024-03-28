@@ -36,7 +36,7 @@ class Gui:
 
         # konfiguriere Titel und Fenstergröße
         app.title("Auto Completer")
-        app.geometry("500x300")
+        app.geometry("750x450")
 
         # erstelle alles umfassenden Mainframe (umfasst komplettes Fenster und das auch bei manueller Größenänderung)
         main_frame = ttk.Frame(app)
