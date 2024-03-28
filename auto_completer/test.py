@@ -4,7 +4,7 @@
 # Testprogramm zum Testen der Auto-Completer-Funktionen
 #   .run(data, k)   bekommt Daten aus txt File und k übergeben und gibt Ergebnisse
 #                   der Auto-Vervollständigung zum entsprechenden User Input aus.
-#   .main()         Hauptprogramm
+#   .main()         Hauptfunktion
 # ---------------------------------------------------------------------------------------------
 
 import sys
@@ -26,7 +26,7 @@ def run(data, k):
 
 
 # ---------------------------------------------------------------------------------------------
-# Hauptprogramm
+# Hauptfunktion
 # Liest file von txt Datei mit Daten und k von der Kommandozeile ein,
 # erzeugt Objekt data von AutoComplete und ruft run mit data und k auf.
 def main():
